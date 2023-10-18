@@ -2,6 +2,7 @@ import "@/styles/globals.css";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Navtab from "@/components/Navtab";
+import HomeCards from "@/components/HomeCards";
 
 export default function App({ Component, pageProps }) {
   return (
@@ -11,6 +12,7 @@ export default function App({ Component, pageProps }) {
 
       <Hero />
       <Navtab />
+      <HomeCards />
     </div>
   );
 }
