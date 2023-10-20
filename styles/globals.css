@@ -11,3 +11,14 @@ body {
   margin: 0;
   padding: 0;
 }
+.small-image {
+  width: 400px; /* Adjust the desired width */
+  height: 300px; /* Adjust the desired height */
+  margin-left: 150px;
+}
+
+.small-banner {
+  width: 1400px;
+  height: 550px;
+  margin-left: 150px;
+}

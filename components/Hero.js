@@ -40,7 +40,7 @@ const Hero = () => {
       {carouselData.map((item, index) => (
         <div key={index} className="flex">
           <div className="banner-content flex flex-col justify-center w-1/2 p-8 ">
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-gray-800">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-gray-800 mt-14">
               VDC Telecom
             </h1>
             <p className="mt-4 text-lg md:text-xl lg:text-2xl text-gray-600">

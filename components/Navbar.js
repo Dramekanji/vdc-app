@@ -1,6 +1,8 @@
 import Link from "next/link";
+import Image from "next/image";
 import React, { useState } from "react";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
+import Logo from "../public/images/vdclogo.png";
 
 const Navbar = () => {
   const [nav, setNav] = useState(false);
@@ -19,12 +21,12 @@ const Navbar = () => {
   };
 
   return (
-    <div className="fixed left-0 top-0 z-10 w-full bg-green-500">
+    <div className="fixed left-0 top-0 z-10 w-full bg-green-400">
       <div className="container mx-auto flex justify-between items-center p-4">
         <div className="flex items-center ml-20">
           <a href="/">
-            <div className="text-white text-5xl font-bold cursor-pointer">
-              Logo
+            <div>
+              <Image src={Logo} alt="VDC Logo" style={{ width: "200px" }} />
             </div>
           </a>
           <ul className="hidden sm:flex space-x-1 ">
@@ -39,7 +41,7 @@ const Navbar = () => {
                 Shop
               </Link>
               <div
-                className={`absolute left-0 w-60 bg-green-500 shadow-xl text-gray-800 mt-6 text-base py-8 ${
+                className={`absolute left-0 w-60 bg-green-500 shadow-2xl shadow-gray-400  text-gray-800 mt-6 text-base py-8 ${
                   shopSubMenuVisible ? "block" : "hidden"
                 }`}
                 onClick={openShopSubMenu}
@@ -86,7 +88,7 @@ const Navbar = () => {
       <div
         className={
           nav
-            ? "sm:hidden fixed top-0 right-0 bottom-0 flex flex-col justify-center items-center w-full h-screen bg-black text-center ease-in duration-300"
+            ? "sm:hidden fixed top-0 right-0 bottom-0 flex flex-col justify-center items-center w-full h-screen bg-green-500 text-center ease-in duration-300"
             : "hidden"
         }
       >
