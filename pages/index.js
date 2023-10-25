@@ -1,5 +1,9 @@
-import Hero from "@/components/Hero";
 import Head from "next/head";
+import Hero from "@/components/Hero";
+import Navtab from "@/components/Navtab";
+import HomeCards from "@/components/HomeCards";
+import HomeTiles from "@/components/HomeTiles";
+import BottomBanner from "@/components/BottomBanner";
 
 export default function Home() {
   return (
@@ -10,7 +14,11 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      {/* <Hero heading="VDC Telecom" message="Les Solutions Avancées sur IP" /> */}
+      <Hero />
+      <Navtab />
+      <HomeCards />
+      <HomeTiles />
+      <BottomBanner />
     </div>
   );
 }

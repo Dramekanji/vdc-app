@@ -11,7 +11,7 @@ const BottomBanner = () => {
         alt="Bottom Banner"
         width={1400}
         height={550}
-        className="lg:ml-40"
+        className="lg:ml-40 rounded-2xl mb-10"
       />
       <div className="absolute inset-0 flex items-center justify-center">
         <BannerCard />

@@ -5,6 +5,7 @@ import Navtab from "@/components/Navtab";
 import HomeCards from "@/components/HomeCards";
 import HomeTiles from "@/components/HomeTiles";
 import BottomBanner from "@/components/BottomBanner";
+import Footer from "@/components/Footer";
 
 export default function App({ Component, pageProps }) {
   return (
@@ -12,11 +13,12 @@ export default function App({ Component, pageProps }) {
       <Navbar />
       <Component {...pageProps} />
 
-      <Hero />
+      {/* <Hero />
       <Navtab />
       <HomeCards />
       <HomeTiles />
-      <BottomBanner />
+      <BottomBanner /> */}
+      <Footer />
     </div>
   );
 }
