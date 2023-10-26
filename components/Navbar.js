@@ -37,7 +37,7 @@ const Navbar = () => {
               </div>
 
               <div
-                className={`absolute left-0 w-60 bg-[#1EAB07] shadow-2xl shadow-gray-400 text-gray-800 mt-6 text-base py-8 ${
+                className={`absolute left-0 w-60 bg-[#1EAB07] shadow-md shadow-gray-800 text-gray-800 mt-6 text-base py-8 ${
                   shopSubMenuVisible ? "block" : "hidden"
                 }`}
                 onMouseLeave={toggleShopSubMenu}
@@ -45,7 +45,7 @@ const Navbar = () => {
                 <div className="shadow-lg bg-[#1EAB07]">
                   {/* Add shadow container */}
                   <Link
-                    href="/internet"
+                    href="/Internet"
                     className="block py-2 px-4 hover:bg-[#F39419]"
                   >
                     Internet
