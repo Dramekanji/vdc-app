@@ -51,7 +51,7 @@ const Navbar = () => {
                     Internet
                   </Link>
                   <Link
-                    href="/tv"
+                    href="/TV"
                     className="block py-2 px-4 mt-2 hover:bg-[#F39419]"
                   >
                     TV
@@ -112,7 +112,7 @@ const Navbar = () => {
               shopSubMenuVisible ? "block" : "hidden"
             } text-white text-2xl cursor-pointer py-4 shadow-xl`}
           >
-            <Link href="/tv">TV</Link>
+            <Link href="/TV">TV</Link>
           </div>
           <div
             className={`${

@@ -26,7 +26,7 @@ const Navtab = () => {
                 Internet
               </div>
             </Link>
-            <Link href="/tv">
+            <Link href="/TV">
               <li className="cursor-pointer p-4  hover:bg-[#F39419] mx-4 bg-[#1EAB07] rounded-full">
                 <div className="w-20 h-20 flex items-center justify-center">
                   <FaTv className="text-5xl" />
