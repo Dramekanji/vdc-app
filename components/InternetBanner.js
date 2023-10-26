@@ -4,7 +4,7 @@ import Image from "next/image";
 const InternetBanner = () => {
   return (
     <div className="relative text-center">
-      <div className="relative h-[560px] w-full mt-20">
+      <div className="relative h-[480px] w-full mt-20">
         {" "}
         {/* Adjust the height here (e.g., h-96 for 24rem) */}
         <div
