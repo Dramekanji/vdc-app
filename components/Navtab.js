@@ -22,7 +22,7 @@ const Navtab = () => {
                   <FaWifi className="text-5xl" />
                 </div>
               </li>
-              <div className="text-xl mt-2 text-black hover:text-[#F39419]">
+              <div className=" mt-2 font-medium text-black hover:text-[#F39419]">
                 Internet
               </div>
             </Link>
@@ -32,7 +32,7 @@ const Navtab = () => {
                   <FaTv className="text-5xl" />
                 </div>
               </li>
-              <div className="text-xl mt-2 text-black hover:text-[#F39419]">
+              <div className=" mt-2 font-medium text-black hover:text-[#F39419]">
                 TV
               </div>
             </Link>
@@ -42,7 +42,7 @@ const Navtab = () => {
                   <FaPhone className="text-5xl" />
                 </div>
               </li>
-              <div className="text-xl mt-2 text-black hover:text-[#F39419]">
+              <div className=" mt-2 font-medium text-black hover:text-[#F39419]">
                 Phone
               </div>
             </Link>
@@ -52,7 +52,7 @@ const Navtab = () => {
                   <FaTags className="text-5xl" />
                 </div>
               </li>
-              <div className="text-xl mt-2 text-black hover:text-[#F39419]">
+              <div className=" mt-2 font-medium text-black hover:text-[#F39419]">
                 Promotions
               </div>
             </Link>
@@ -62,7 +62,7 @@ const Navtab = () => {
                   <FaBuilding className="text-5xl" />
                 </div>
               </li>
-              <div className="text-xl mt-2 text-black hover:text-[#F39419]">
+              <div className=" mt-2 font-medium text-black hover:text-[#F39419]">
                 Business
               </div>
             </Link>
@@ -72,7 +72,7 @@ const Navtab = () => {
                   <FaFileContract className="text-5xl" />
                 </div>
               </li>
-              <div className="text-xl mt-2 text-black hover:text-[#F39419]">
+              <div className=" mt-2 font-medium text-black hover:text-[#F39419]">
                 Plans
               </div>
             </Link>
@@ -82,7 +82,7 @@ const Navtab = () => {
                   <MdDevicesOther className="text-5xl" />
                 </div>
               </li>
-              <div className="text-xl mt-2 text-black hover:text-[#F39419]">
+              <div className=" mt-2 font-medium text-black hover:text-[#F39419]">
                 Bundles
               </div>
             </Link>

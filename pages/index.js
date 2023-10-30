@@ -4,6 +4,7 @@ import Navtab from "@/components/Navtab";
 import HomeCards from "@/components/HomeCards";
 import HomeTiles from "@/components/HomeTiles";
 import BottomBanner from "@/components/BottomBanner";
+import HeroCarousel from "@/components/HeroCarousel";
 
 export default function Home() {
   return (
@@ -14,7 +15,8 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Hero />
+      {/* <Hero /> */}
+      <HeroCarousel />
       <Navtab />
       <HomeCards />
       <HomeTiles />
