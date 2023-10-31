@@ -11,11 +11,10 @@ const InternetCard = () => {
         />
         <div class="p-6">
           <h2 class="text-2xl font-bold text-gray-800 mb-4 text-center">
-            Une expérience télévisuelle supérieure avec l'IPTV
+            Internet
           </h2>
-          <p class="text-gray-700 leading-tight mb-4 text-center">
-            Profitez de notre sélection de télévision en direct, de séries et de
-            films.
+          <p class="text-gray-700 font-light leading-tight mb-4 text-center">
+            Et id commodo nulla cupidatat elit incididunt ad.
           </p>
         </div>
       </div>

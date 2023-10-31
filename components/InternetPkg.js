@@ -6,17 +6,17 @@ const InternetPkg = () => {
   // Define an array of package objects with details
   const packages = [
     {
-      name: "WIMAX",
+      name: "SHARED LINE",
       speed: "2 Gbps",
       price: 1000000, // Price as a number
     },
     {
-      name: "FIBRE",
+      name: "DEDICATED LINE 1",
       speed: "3 Gbps",
       price: 2000000, // Price as a number
     },
     {
-      name: "VSAT",
+      name: "DEDICATED LINE 2",
       speed: "500 Mbps",
       price: 3000000, // Price as a number
     },
@@ -81,10 +81,12 @@ const InternetPkg = () => {
           <div key={index} className="p-4 xl:w-1/4 md:w-1/2 w-full">
             <div
               className={`h-full p-6 rounded-lg border-2 ${
-                pkg.name === "FIBRE" ? "border-orange-500" : "border-gray-300"
+                pkg.name === "DEDICATED LINE 1"
+                  ? "border-orange-500"
+                  : "border-gray-300"
               } flex flex-col relative overflow-hidden`}
             >
-              {pkg.name === "FIBRE" && (
+              {pkg.name === "DEDICATED LINE 1" && (
                 <span className="bg-orange-500 text-white px-3 py-1 tracking-widest text-xs absolute right-0 top-0 rounded-bl">
                   POPULAIRE
                 </span>
@@ -92,7 +94,7 @@ const InternetPkg = () => {
               <h2 className="text-sm tracking-widest title-font mb-1 font-medium">
                 {pkg.name}
               </h2>
-              <h1 className="text-2xl text-gray-900 pb-4 mb-4 border-b border-gray-200 leading-none">
+              <h1 className="text-2xl font-sans text-gray-900 pb-4 mb-4 border-b border-gray-200 leading-none">
                 {pkg.price.toLocaleString("en-US")} GNF
                 <span class="text-lg ml-1 font-normal text-gray-500">
                   {unit}
@@ -114,16 +116,18 @@ const InternetPkg = () => {
               </p>
               <p className="flex items-center text-gray-600 gap-4">
                 <FaRegHdd size={30} />
-                VDC Hub
+                MicroTik
               </p>
               <p className="flex items-center text-gray-600 mb-4 text-[9px] ml-10">
                 Modem à haute vitesse de VDC Telecom
               </p>
               <button
                 className={`flex items-center mt-auto text-white ${
-                  pkg.name === "FIBRE" ? "bg-orange-500" : "bg-gray-400"
+                  pkg.name === "DEDICATED LINE 1"
+                    ? "bg-orange-500"
+                    : "bg-gray-400"
                 } border-0 py-2 px-4 w-full focus:outline-none ${
-                  pkg.name === "FIBRE"
+                  pkg.name === "DEDICATED LINE 1"
                     ? "hover:bg-orange-600"
                     : "hover:bg-gray-500"
                 } rounded mb-4`}
@@ -142,8 +146,8 @@ const InternetPkg = () => {
                 </svg>{" "}
               </button>
               <p className="text-xs text-gray-500 mt-3">
-                {pkg.name === "FIBRE" && (
-                  <p className="text-xs text-gray-500 mt-3">
+                {pkg.name === "DEDICATED LINE 1" && (
+                  <p className="text-xs text-black mt-3 font-light">
                     Obtenez une connexion Internet ultra-rapide grâce à notre
                     réseau à fibre optique haute vitesse et à notre technologie
                     FTTH avancée, offrant le meilleur en technologie LAN et
@@ -151,8 +155,8 @@ const InternetPkg = () => {
                   </p>
                 )}
 
-                {pkg.name === "WIMAX" && (
-                  <p className="text-xs text-gray-500 mt-3">
+                {pkg.name === "SHARED LINE" && (
+                  <p className="text-xs text-black mt-3 font-light">
                     Naviguez d'un site à l'autre, partagez vos photos, faites
                     vos achats en ligne, consultez vos comptes bancaires, et
                     savourez votre musique préférée grâce à nos tout nouveaux
@@ -160,8 +164,8 @@ const InternetPkg = () => {
                   </p>
                 )}
 
-                {pkg.name === "VSAT" && (
-                  <p className="text-xs text-gray-500 mt-3">
+                {pkg.name === "DEDICATED LINE 2" && (
+                  <p className="text-xs text-black mt-3 font-light">
                     Peu importe où se trouve votre entreprise en Guinée, notre
                     solution VSAT de VDC|Telecom garantit une connectivité
                     Internet sans interruption pour tous les utilisateurs de

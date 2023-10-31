@@ -14,7 +14,7 @@ const HomeTiles = () => {
             width={800}
             height={600}
           />
-          <h1 className="text-3xl font-semibold text-gray-800 mt-4 text-center">
+          <h1 className="text-xl font-semibold text-gray-800 mt-4 text-center">
             Une connexion internet haute vitesse.
           </h1>
         </div>
@@ -27,7 +27,7 @@ const HomeTiles = () => {
             width={800}
             height={600}
           />
-          <h1 className="text-3xl font-semibold text-gray-800 mt-4 text-center">
+          <h1 className="text-xl font-semibold text-gray-800 mt-4 text-center">
             Nos Services à Valeurs Ajoutées boostent la performance de votre
             entreprise !
           </h1>

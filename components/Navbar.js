@@ -43,7 +43,6 @@ const Navbar = () => {
                 onMouseLeave={toggleShopSubMenu}
               >
                 <div className="shadow-lg bg-[#1EAB07]">
-                  {/* Add shadow container */}
                   <Link
                     href="/Internet"
                     className="block py-2 px-4 hover:bg-[#F39419]"
@@ -52,12 +51,12 @@ const Navbar = () => {
                   </Link>
                   <Link
                     href="/TV"
-                    className="block py-2 px-4 mt-2 hover:bg-[#F39419]"
+                    className="block py-2 px-4 mt-2 hover-bg-[#F39419]"
                   >
                     TV
                   </Link>
                   <Link
-                    href="/phone"
+                    href="/Phone"
                     className="block py-2 px-4 mt-2 hover:bg-[#F39419]"
                   >
                     Phone
@@ -65,12 +64,12 @@ const Navbar = () => {
                 </div>
               </div>
             </li>
-            <a href="/support" className="relative group">
-              <div className="text-white text-2xl cursor-pointer px-2 py-1">
+            <li className="text-white cursor-pointer px-6 py-1 relative group">
+              <div className="text-white text-2xl cursor-pointer px-2 py-1 relative">
                 Support
+                <div className="absolute w-full h-1 bg-[#F39419] bottom-0 left-0 transform scale-x-0 transition-transform duration-300 origin-left group-hover:scale-x-100"></div>
               </div>
-              <div className="absolute w-full h-1 bg-[#F39419] bottom-0 left-0 transform scale-x-0 transition-transform duration-300 origin-left group-hover:scale-x-100"></div>
-            </a>
+            </li>
           </ul>
         </div>
         <div
