@@ -13,7 +13,7 @@ const HomeCards = () => {
       title: "Card 2",
       content: "This is the second card.",
       imageUrl:
-        "https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg",
+        "https://www.bcbsri.com/sites/default/files/styles/viewpoints_large_1200_x_500_/public/2019-02/Black%20EBRG3.jpg?itok=3DoAYG7X",
     },
     {
       title: "Card 3",
@@ -43,7 +43,7 @@ const HomeCards = () => {
                 <img
                   src={card.imageUrl}
                   alt={card.title}
-                  className="w-full h-auto rounded-lg"
+                  className="w-full h-64 rounded-lg"
                 />
               </div>
             </div>

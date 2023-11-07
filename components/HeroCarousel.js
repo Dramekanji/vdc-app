@@ -57,7 +57,7 @@ const HeroCarousel = () => {
           <div className="mt-20 relative" key={index}>
             <img src={item.src} alt={item.alt} />
             <div
-              className={`absolute inset-0 flex items-center justify-center text-4xl font-bold text-white transition-opacity duration-[5s] z-10 ${
+              className={`absolute inset-0 flex items-center justify-center lg:text-4xl font-bold text-white transition-opacity duration-[5s] z-10 ${
                 currentSlide === index ? "opacity-100" : "opacity-0"
               }`}
             >
@@ -73,7 +73,7 @@ const HeroCarousel = () => {
                 currentSlide === index ? "opacity-100" : "opacity-0"
               }`}
             >
-              <button className="text-xl cursor-pointer bg-green-600 hover:bg-green-700 text-white font-semibold px-4 py-2 rounded-3xl mb-48 z-10">
+              <button className="lg:text-xl cursor-pointer bg-green-600 hover:bg-green-700 text-white font-semibold px-4 py-2 rounded-3xl mb-48 z-10">
                 {item.buttonLabel}
               </button>
             </div>

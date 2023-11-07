@@ -98,7 +98,7 @@ const TVPkg = () => {
               <h2 className="text-sm tracking-widest title-font mb-1 font-medium">
                 {pkg.name}
               </h2>
-              <h1 className="text-2xl text-gray-900 pb-4 mb-4 border-b border-gray-200 leading-none">
+              <h1 className="text-2xl font-sans text-gray-900 pb-4 mb-4 border-b border-gray-200 leading-none">
                 {pkg.price.toLocaleString("en-US")} GNF
                 <span class="text-lg ml-1 font-normal text-gray-500">
                   {unit}

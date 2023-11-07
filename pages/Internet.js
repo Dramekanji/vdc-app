@@ -7,7 +7,6 @@ const Internet = () => {
   return (
     <div>
       <InternetBanner />
-
       <p className="text-center font-light md:text-left md:max-w-3xl mx-auto mt-10 mb-10">
         Trois technologies permettent aujourd’hui de fournir à nos clients une
         connexion internet haute vitesse. Derrière le Wimax qui est de loin la

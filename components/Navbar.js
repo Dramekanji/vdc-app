@@ -8,6 +8,7 @@ import Logo from "../public/images/vdclogo.png";
 const Navbar = () => {
   const [nav, setNav] = useState(false);
   const [shopSubMenuVisible, setShopSubMenuVisible] = useState(false);
+  const [supportSubMenuVisible, setSupportSubMenuVisible] = useState(false);
 
   const handleNav = () => {
     setNav(!nav);
@@ -15,6 +16,22 @@ const Navbar = () => {
 
   const toggleShopSubMenu = () => {
     setShopSubMenuVisible(!shopSubMenuVisible);
+    setSupportSubMenuVisible(false); // Close support submenu when opening shop submenu
+  };
+
+  const toggleSupportSubMenu = () => {
+    setSupportSubMenuVisible(!supportSubMenuVisible);
+    setShopSubMenuVisible(false); // Close shop submenu when opening support submenu
+  };
+
+  const toggleShopSubmenuOnClick = () => {
+    // Toggle the Shop submenu when clicking on the Shop item
+    setShopSubMenuVisible(!shopSubMenuVisible);
+    setSupportSubMenuVisible(false); // Close support submenu when opening shop submenu
+  };
+
+  const closeNav = () => {
+    setNav(false);
   };
 
   return (
@@ -29,46 +46,68 @@ const Navbar = () => {
           <ul className="hidden sm:flex space-x-1">
             <li
               className="text-white cursor-pointer px-6 py-1 relative group"
-              onClick={toggleShopSubMenu}
+              // onMouseEnter={toggleShopSubMenu}
+              // onMouseLeave={toggleShopSubMenu}
+              onClick={toggleShopSubmenuOnClick} // Toggle Shop submenu on click
             >
               <div className="text-white text-2xl cursor-pointer px-2 py-1 relative">
                 Shop
-                <div className="absolute w-full h-1 bg-[#F39419] bottom-0 left-0 transform scale-x-0 transition-transform duration-300 origin-left group-hover:scale-x-100"></div>
+                <div
+                  className={`absolute w-full h-1 bottom-0 left-0 transition-all duration-300 origin-left ${
+                    shopSubMenuVisible ? "w-full" : "w-0"
+                  }`}
+                  style={{ background: "#F39419" }}
+                ></div>
               </div>
 
               <div
                 className={`absolute left-0 w-60 bg-[#1EAB07] shadow-md shadow-gray-800 text-gray-800 mt-6 text-base py-8 ${
                   shopSubMenuVisible ? "block" : "hidden"
                 }`}
-                onMouseLeave={toggleShopSubMenu}
               >
+                {/* Normal SubMenu */}
                 <div className="shadow-lg bg-[#1EAB07]">
                   <Link
                     href="/Internet"
                     className="block py-2 px-4 hover:bg-[#F39419]"
+                    onClick={closeNav}
                   >
                     Internet
                   </Link>
                   <Link
                     href="/TV"
-                    className="block py-2 px-4 mt-2 hover-bg-[#F39419]"
+                    className="block py-2 px-4 hover-bg-[#F39419]"
+                    onClick={closeNav}
                   >
                     TV
                   </Link>
                   <Link
                     href="/Phone"
                     className="block py-2 px-4 mt-2 hover:bg-[#F39419]"
+                    onClick={closeNav}
                   >
                     Phone
                   </Link>
                 </div>
               </div>
             </li>
-            <li className="text-white cursor-pointer px-6 py-1 relative group">
-              <div className="text-white text-2xl cursor-pointer px-2 py-1 relative">
+            <li
+              className="text-white cursor-pointer px-6 py-1 relative group"
+              onMouseEnter={toggleSupportSubMenu}
+              onMouseLeave={toggleSupportSubMenu}
+            >
+              <Link
+                href="/Support"
+                className="text-white text-2xl cursor-pointer px-2 py-1 relative"
+              >
                 Support
-                <div className="absolute w-full h-1 bg-[#F39419] bottom-0 left-0 transform scale-x-0 transition-transform duration-300 origin-left group-hover:scale-x-100"></div>
-              </div>
+                <div
+                  className={`absolute w-full h-1 bottom-0 left-0 transition-all duration-300 origin-left ${
+                    supportSubMenuVisible ? "w-full" : "w-0"
+                  }`}
+                  style={{ background: "#F39419" }}
+                ></div>
+              </Link>
             </li>
           </ul>
         </div>
@@ -84,18 +123,20 @@ const Navbar = () => {
         </div>
       </div>
       <div
-        className={
+        className={`${
           nav
-            ? "sm:hidden fixed top-0 right-0 bottom-0 flex flex-col justify-center items-center w-full h-screen bg-[#228B22] text-center ease-in duration-300"
-            : "hidden"
-        }
+            ? "sm:hidden fixed top-0 right-0 bottom-0 flex flex-col justify-center items-center w-full h-screen bg-[#228B22] text-center ease-in duration-300 transform translate-x-0"
+            : "sm:hidden fixed top-0 right-0 bottom-0 flex flex-col justify-center items-center w-full h-screen bg-[#228B22] text-center ease-in duration-300 transform translate-x-full"
+        }`}
       >
         <div
-          className="container text-white text-2xl cursor-pointer shadow-xl bg-[#1EAB07] rounded px-6 py-2 border-b-2 border-black flex items-center justify-between"
+          className={`container text-white text-2xl cursor-pointer shadow-xl bg-[#1EAB07] rounded px-6 py-2 border-b-2 border-black flex items-center justify-between transform ${
+            nav ? "translate-x-0" : "translate-x-full"
+          }`}
           onClick={toggleShopSubMenu}
         >
           <button>Shop</button>
-          <FaAngleDown />
+          {shopSubMenuVisible ? <FaAngleDown /> : <FaAngleRight />}
         </div>
 
         <div className="container shadow-lg">
@@ -104,27 +145,37 @@ const Navbar = () => {
               shopSubMenuVisible ? "block" : "hidden"
             } text-white text-2xl cursor-pointer py-4 shadow-xl`}
           >
-            <Link href="/internet">Internet</Link>
+            <Link href="/Internet" onClick={closeNav}>
+              Internet
+            </Link>
           </div>
           <div
             className={`${
               shopSubMenuVisible ? "block" : "hidden"
             } text-white text-2xl cursor-pointer py-4 shadow-xl`}
           >
-            <Link href="/TV">TV</Link>
+            <Link href="/TV" onClick={closeNav}>
+              TV
+            </Link>
           </div>
           <div
             className={`${
               shopSubMenuVisible ? "block" : "hidden"
             } text-white text-2xl cursor-pointer py-4 shadow-xl`}
           >
-            <Link href="/phone">Phone</Link>
+            <Link href="/Phone" onClick={closeNav}>
+              Phone
+            </Link>
           </div>
         </div>
-        <div className="container text-white text-2xl cursor-pointer shadow-xl bg-[#1EAB07] rounded px-6 py-2 border-b-2 border-black flex items-center justify-between">
-          <a href="/support">
+        <div
+          className={`container text-white text-2xl cursor-pointer shadow-xl bg-[#1EAB07] rounded px-6 py-2 border-b-2 border-black flex items-center justify-between transform ${
+            nav ? "translate-x-0" : "translate-x-full"
+          }`}
+        >
+          <Link href="/support" onClick={closeNav}>
             <div>Support</div>
-          </a>
+          </Link>
           <FaAngleRight />
         </div>
       </div>

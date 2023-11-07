@@ -1,27 +1,22 @@
 import React, { useState } from "react";
 import { FiArrowDownCircle, FiArrowUpCircle } from "react-icons/fi";
-import { FaRegHdd } from "react-icons/fa";
+import { FaTv, FaRegHdd } from "react-icons/fa";
+import { MdLiveTv } from "react-icons/md";
 
-const InternetPkg = () => {
+const PhonePkg = () => {
   // Define an array of package objects with details
   const packages = [
     {
-      name: "SHARED LINE",
-      downloadSpeed: "10 Mbps",
-      uploadSpeed: "5 Mbps",
-      price: 1000000, // Price as a number
+      name: "Basic",
+      channel: "20 Chaînes",
+      channelPremium: "5 Chaînes Premium",
+      price: 100000, // Price as a number
     },
     {
-      name: "DEDICATED LINE 1",
-      downloadSpeed: "3 Mbps",
-      uploadSpeed: "2 Mps",
-      price: 2000000, // Price as a number
-    },
-    {
-      name: "DEDICATED LINE 2",
-      downloadSpeed: "1 Mbps",
-      uploadSpeed: "1 Mbps",
-      price: 3000000, // Price as a number
+      name: "Premium",
+      channel: "40 Chaînes",
+      channelPremium: "10 Chaînes Premium",
+      price: 200000, // Price as a number
     },
   ];
   const [isMensuelActive, setIsMensuelActive] = useState(true);
@@ -84,12 +79,10 @@ const InternetPkg = () => {
           <div key={index} className="p-4 xl:w-1/4 md:w-1/2 w-full">
             <div
               className={`h-full p-6 rounded-lg border-2 ${
-                pkg.name === "DEDICATED LINE 1"
-                  ? "border-orange-500"
-                  : "border-gray-300"
+                pkg.name === "Premium" ? "border-orange-500" : "border-gray-300"
               } flex flex-col relative overflow-hidden`}
             >
-              {pkg.name === "DEDICATED LINE 1" && (
+              {pkg.name === "Premium" && (
                 <span className="bg-orange-500 text-white px-3 py-1 tracking-widest text-xs absolute right-0 top-0 rounded-bl">
                   POPULAIRE
                 </span>
@@ -104,33 +97,31 @@ const InternetPkg = () => {
                 </span>
               </h1>
               <p className="flex items-center text-gray-600 gap-4">
-                <FiArrowDownCircle size={30} />
-                {pkg.downloadSpeed}
+                <FaTv size={30} />
+                {pkg.channel}
               </p>
               <p className="flex items-center text-gray-600 mb-2 text-[9px] ml-10">
-                Vitesse de download à votre modem VDC Hub
+                Avec ce forfait vous aurez toutes les chaînes stardard.
               </p>
               <p className="flex items-center text-gray-600 gap-4">
-                <FiArrowUpCircle size={30} />
-                {pkg.uploadSpeed}
+                <MdLiveTv size={30} />
+                {pkg.channelPremium}
               </p>
               <p className="flex items-center text-gray-600 mb-2 text-[9px] ml-10">
-                Vitesse de upload à votre modem VDC Hub
+                Avec ce forfait vous aurez toutes les chaînes premium.
               </p>
               <p className="flex items-center text-gray-600 gap-4">
                 <FaRegHdd size={30} />
-                MicroTik
+                VDC Box
               </p>
               <p className="flex items-center text-gray-600 mb-4 text-[9px] ml-10">
-                Modem à haute vitesse de VDC Telecom
+                La VDC Box vous offres toutes vos chaînes preferées.
               </p>
               <button
                 className={`flex items-center mt-auto text-white ${
-                  pkg.name === "DEDICATED LINE 1"
-                    ? "bg-orange-500"
-                    : "bg-gray-400"
+                  pkg.name === "Premium" ? "bg-orange-500" : "bg-gray-400"
                 } border-0 py-2 px-4 w-full focus:outline-none ${
-                  pkg.name === "DEDICATED LINE 1"
+                  pkg.name === "VDC Good"
                     ? "hover:bg-orange-600"
                     : "hover:bg-gray-500"
                 } rounded mb-4`}
@@ -149,32 +140,10 @@ const InternetPkg = () => {
                 </svg>{" "}
               </button>
               <p className="text-xs text-gray-500 mt-3">
-                {pkg.name === "DEDICATED LINE 1" && (
-                  <p className="text-xs text-black mt-3 font-light">
-                    Obtenez une connexion Internet ultra-rapide grâce à notre
-                    réseau à fibre optique haute vitesse et à notre technologie
-                    FTTH avancée, offrant le meilleur en technologie LAN et
-                    Wi-Fi pour votre plaisir !
-                  </p>
-                )}
-
-                {pkg.name === "SHARED LINE" && (
-                  <p className="text-xs text-black mt-6 font-light">
-                    Naviguez d'un site à l'autre, partagez vos photos, faites
-                    vos achats en ligne, consultez vos comptes bancaires, et
-                    savourez votre musique préférée grâce à nos tout nouveaux
-                    services Internet.
-                  </p>
-                )}
-
-                {pkg.name === "DEDICATED LINE 2" && (
-                  <p className="text-xs text-black mt-3 font-light">
-                    Peu importe où se trouve votre entreprise en Guinée, notre
-                    solution VSAT de VDC|Telecom garantit une connectivité
-                    Internet sans interruption pour tous les utilisateurs de
-                    votre réseau local.
-                  </p>
-                )}
+                Naviguez d'un site à l'autre, partagez vos photos, faites vos
+                achats en ligne, consultez vos comptes bancaires, et savourez
+                votre musique préférée grâce à nos tout nouveaux services
+                Internet.
               </p>
             </div>
           </div>
@@ -184,4 +153,4 @@ const InternetPkg = () => {
   );
 };
 
-export default InternetPkg;
+export default PhonePkg;
