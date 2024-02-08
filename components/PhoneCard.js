@@ -11,7 +11,7 @@ const PhoneCard = () => {
         />
         <div className="p-6">
           <h2 className="text-2xl font-bold text-gray-800 mb-4 text-center">
-            Une expérience télévisuelle supérieure avec l'IPTV
+            Une expérience télévisuelle supérieure avec l&apos;IPTV
           </h2>
           <p className="text-gray-700 leading-tight mb-4 text-center">
             Profitez de notre sélection de télévision en direct, de séries et de

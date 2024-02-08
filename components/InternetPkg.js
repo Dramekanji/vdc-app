@@ -160,9 +160,9 @@ const InternetPkg = () => {
 
                 {pkg.name === "SHARED LINE" && (
                   <p className="text-xs text-black mt-6 font-light">
-                    Naviguez d'un site à l'autre, partagez vos photos, faites
-                    vos achats en ligne, consultez vos comptes bancaires, et
-                    savourez votre musique préférée grâce à nos tout nouveaux
+                    Naviguez d&apos;un site à l&apos;autre, partagez vos photos,
+                    faites vos achats en ligne, consultez vos comptes bancaires,
+                    et savourez votre musique préférée grâce à nos tout nouveaux
                     services Internet.
                   </p>
                 )}

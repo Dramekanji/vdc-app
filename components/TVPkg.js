@@ -148,10 +148,10 @@ const TVPkg = () => {
                 </svg>{" "}
               </button>
               <p className="text-xs text-gray-500 mt-3">
-                Naviguez d'un site à l'autre, partagez vos photos, faites vos
-                achats en ligne, consultez vos comptes bancaires, et savourez
-                votre musique préférée grâce à nos tout nouveaux services
-                Internet.
+                Naviguez d&apos;un site à l&apos;autre, partagez vos photos,
+                faites vos achats en ligne, consultez vos comptes bancaires, et
+                savourez votre musique préférée grâce à nos tout nouveaux
+                services Internet.
               </p>
             </div>
           </div>

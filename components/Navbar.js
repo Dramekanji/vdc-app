@@ -38,11 +38,11 @@ const Navbar = () => {
     <div className="fixed left-0 top-0 z-20 w-full bg-[#1EAB07]">
       <div className="container mx-auto flex justify-between items-center p-4">
         <div className="flex items-center ml-20">
-          <a href="/">
+          <Link href="/">
             <div>
               <Image src={Logo} alt="VDC Logo" style={{ width: "200px" }} />
             </div>
-          </a>
+          </Link>
           <ul className="hidden sm:flex space-x-1">
             <li
               className="text-white cursor-pointer px-6 py-1 relative group"
