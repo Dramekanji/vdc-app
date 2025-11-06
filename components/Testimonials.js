@@ -20,7 +20,7 @@ const Testimonials = () => {
       location: "Kaloum, Conakry",
       rating: 5,
       text: "Depuis que j'ai souscrit à VDC Telecom, je peux enfin gérer mon restaurant efficacement. La connexion est stable et rapide, même aux heures de pointe. Le service client est exceptionnel !",
-      image: "https://i.pravatar.cc/150?img=5",
+      image: "https://randomuser.me/api/portraits/women/89.jpg",
     },
     {
       name: "Ibrahim Sylla",
@@ -28,7 +28,7 @@ const Testimonials = () => {
       location: "Matam, Conakry",
       rating: 5,
       text: "En tant que développeur, j'ai besoin d'une connexion fiable. VDC Telecom dépasse toutes mes attentes. Les vitesses de téléchargement sont impressionnantes et la latence est minimale.",
-      image: "https://i.pravatar.cc/150?img=12",
+      image: "https://randomuser.me/api/portraits/men/59.jpg",
     },
     {
       name: "Fatoumata Camara",
@@ -36,7 +36,7 @@ const Testimonials = () => {
       location: "Ratoma, Conakry",
       rating: 5,
       text: "Notre école utilise VDC pour nos cours en ligne et notre administration. Le support technique est réactif et professionnel. Un excellent investissement pour l'éducation !",
-      image: "https://i.pravatar.cc/150?img=9",
+      image: "https://randomuser.me/api/portraits/women/62.jpg",
     },
     {
       name: "Mamadou Bah",
@@ -44,7 +44,7 @@ const Testimonials = () => {
       location: "Kaloum, Conakry",
       rating: 5,
       text: "J'ai testé plusieurs fournisseurs, mais VDC est de loin le meilleur. La fibre optique a transformé la façon dont nous travaillons. Plus de coupures, plus d'attente !",
-      image: "https://i.pravatar.cc/150?img=13",
+      image: "https://randomuser.me/api/portraits/men/80.jpg",
     },
     {
       name: "Aissatou Kouyaté",
@@ -52,7 +52,7 @@ const Testimonials = () => {
       location: "Kipé, Conakry",
       rating: 5,
       text: "Le transfert de fichiers volumineux est maintenant un jeu d'enfant grâce à VDC. L'installation a été rapide et les techniciens étaient très professionnels.",
-      image: "https://i.pravatar.cc/150?img=10",
+      image: "https://randomuser.me/api/portraits/women/69.jpg",
     },
   ];
 
@@ -69,7 +69,9 @@ const Testimonials = () => {
   };
 
   const prevTestimonial = () => {
-    setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+    setCurrentIndex(
+      (prev) => (prev - 1 + testimonials.length) % testimonials.length
+    );
   };
 
   const goToTestimonial = (index) => {
@@ -77,7 +79,10 @@ const Testimonials = () => {
   };
 
   return (
-    <section ref={ref} className="py-20 bg-gradient-to-b from-vdc-gray-50 to-white overflow-hidden">
+    <section
+      ref={ref}
+      className="py-20 bg-gradient-to-b from-vdc-gray-50 to-white overflow-hidden"
+    >
       <div className="container mx-auto px-4 lg:px-8">
         {/* Section Header */}
         <motion.div
@@ -98,7 +103,8 @@ const Testimonials = () => {
             Ce Que Disent Nos Clients
           </h2>
           <p className="text-xl text-vdc-gray-600 max-w-3xl mx-auto">
-            Plus de 50,000 clients satisfaits à travers Conakry nous font confiance pour leurs besoins en connectivité
+            Plus de 50,000 clients satisfaits à travers Conakry nous font
+            confiance pour leurs besoins en connectivité
           </p>
         </motion.div>
 
@@ -133,7 +139,10 @@ const Testimonials = () => {
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ delay: 0.3 + i * 0.1 }}
                     >
-                      <FiStar className="fill-vdc-orange text-vdc-orange" size={24} />
+                      <FiStar
+                        className="fill-vdc-orange text-vdc-orange"
+                        size={24}
+                      />
                     </motion.div>
                   ))}
                 </div>
@@ -245,8 +254,12 @@ const Testimonials = () => {
               ))}
             </div>
             <div className="text-left">
-              <div className="font-bold text-vdc-gray-900">50,000+ Clients Satisfaits</div>
-              <div className="text-sm text-vdc-gray-600">Note moyenne: 4.9/5</div>
+              <div className="font-bold text-vdc-gray-900">
+                50,000+ Clients Satisfaits
+              </div>
+              <div className="text-sm text-vdc-gray-600">
+                Note moyenne: 4.9/5
+              </div>
             </div>
           </div>
         </motion.div>
