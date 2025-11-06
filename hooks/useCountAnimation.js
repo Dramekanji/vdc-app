@@ -4,7 +4,13 @@ export const useCountAnimation = (end, duration = 2000, inView = false) => {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
-    if (!inView) return;
+    if (!inView) {
+      setCount(0);
+      return;
+    }
+
+    // Reset to 0 when starting
+    setCount(0);
 
     let startTime;
     let animationFrame;
@@ -16,7 +22,8 @@ export const useCountAnimation = (end, duration = 2000, inView = false) => {
       if (progress < duration) {
         const percentage = progress / duration;
         const easeOutQuart = 1 - Math.pow(1 - percentage, 4);
-        setCount(Math.floor(end * easeOutQuart));
+        const currentCount = end * easeOutQuart;
+        setCount(Math.floor(currentCount));
         animationFrame = requestAnimationFrame(animate);
       } else {
         setCount(end);
