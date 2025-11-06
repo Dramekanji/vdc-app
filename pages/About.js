@@ -5,11 +5,41 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import Image from "next/image";
 import { FiAward, FiUsers, FiTrendingUp, FiShield, FiHeart, FiZap } from "react-icons/fi";
+import { useCountAnimation } from "../hooks/useCountAnimation";
+
+const AnimatedStat = ({ value, suffix = "", label, inView, delay, decimals = 0 }) => {
+  const count = useCountAnimation(value, 2000, inView);
+
+  const formatNumber = (num) => {
+    if (decimals > 0) {
+      return num.toFixed(decimals);
+    }
+    return num.toLocaleString();
+  };
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.8 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.5, delay }}
+    >
+      <div className="text-5xl md:text-6xl font-bold mb-2">
+        {formatNumber(count)}{suffix}
+      </div>
+      <div className="text-lg text-white/90">{label}</div>
+    </motion.div>
+  );
+};
 
 const About = () => {
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
+  });
+
+  const [statsRef, statsInView] = useInView({
+    triggerOnce: true,
+    threshold: 0.3,
   });
 
   const values = [
@@ -43,13 +73,6 @@ const About = () => {
       title: "Croissance Durable",
       description: "Un développement responsable qui bénéficie à nos clients, employés et à la communauté.",
     },
-  ];
-
-  const stats = [
-    { number: "15+", label: "Années d'Expérience" },
-    { number: "50,000+", label: "Clients Satisfaits" },
-    { number: "99.9%", label: "Disponibilité Réseau" },
-    { number: "24/7", label: "Support Technique" },
   ];
 
   return (
@@ -127,22 +150,38 @@ const About = () => {
       </section>
 
       {/* Stats Section */}
-      <section className="py-20 bg-gradient-to-r from-vdc-green to-vdc-green-light">
+      <section ref={statsRef} className="py-20 bg-gradient-to-r from-vdc-green to-vdc-green-light">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-white text-center">
-            {stats.map((stat, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-              >
-                <div className="text-5xl md:text-6xl font-bold mb-2">
-                  {stat.number}
-                </div>
-                <div className="text-lg text-white/90">{stat.label}</div>
-              </motion.div>
-            ))}
+            <AnimatedStat
+              value={15}
+              suffix="+"
+              label="Années d'Expérience"
+              inView={statsInView}
+              delay={0}
+            />
+            <AnimatedStat
+              value={50000}
+              suffix="+"
+              label="Clients Satisfaits"
+              inView={statsInView}
+              delay={0.1}
+            />
+            <AnimatedStat
+              value={99.9}
+              suffix="%"
+              label="Disponibilité Réseau"
+              inView={statsInView}
+              delay={0.2}
+              decimals={1}
+            />
+            <AnimatedStat
+              value={24}
+              suffix="/7"
+              label="Support Technique"
+              inView={statsInView}
+              delay={0.3}
+            />
           </div>
         </div>
       </section>

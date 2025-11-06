@@ -12,11 +12,49 @@ import {
   FiUsers,
   FiAward
 } from "react-icons/fi";
+import { useCountAnimation } from "../hooks/useCountAnimation";
+
+const AnimatedStat = ({ value, suffix = "", label, inView, delay, decimals = 0 }) => {
+  const count = useCountAnimation(value, 2000, inView);
+
+  const formatNumber = (num) => {
+    if (decimals > 0) {
+      return num.toFixed(decimals);
+    }
+    return num.toLocaleString();
+  };
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.8 }}
+      animate={inView ? { opacity: 1, scale: 1 } : {}}
+      transition={{ duration: 0.5, delay }}
+      className="text-center"
+    >
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={inView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.5, delay: delay + 0.1 }}
+        className="text-4xl md:text-5xl font-bold mb-2"
+      >
+        {formatNumber(count)}{suffix}
+      </motion.div>
+      <div className="text-white/90 font-medium">
+        {label}
+      </div>
+    </motion.div>
+  );
+};
 
 const Features = () => {
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
+  });
+
+  const [statsRef, statsInView] = useInView({
+    triggerOnce: true,
+    threshold: 0.3,
   });
 
   const features = [
@@ -165,37 +203,41 @@ const Features = () => {
 
         {/* Stats Section */}
         <motion.div
+          ref={statsRef}
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.4 }}
           className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 bg-gradient-to-r from-vdc-green to-vdc-green-light rounded-3xl p-12 text-white"
         >
-          {[
-            { number: "50,000+", label: "Clients Satisfaits" },
-            { number: "99.9%", label: "Disponibilité" },
-            { number: "24/7", label: "Support Client" },
-            { number: "15+", label: "Années d'Expérience" },
-          ].map((stat, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={inView ? { opacity: 1, scale: 1 } : {}}
-              transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
-              className="text-center"
-            >
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
-                className="text-4xl md:text-5xl font-bold mb-2"
-              >
-                {stat.number}
-              </motion.div>
-              <div className="text-white/90 font-medium">
-                {stat.label}
-              </div>
-            </motion.div>
-          ))}
+          <AnimatedStat
+            value={50000}
+            suffix="+"
+            label="Clients Satisfaits"
+            inView={statsInView}
+            delay={0.5}
+          />
+          <AnimatedStat
+            value={99.9}
+            suffix="%"
+            label="Disponibilité"
+            inView={statsInView}
+            delay={0.6}
+            decimals={1}
+          />
+          <AnimatedStat
+            value={24}
+            suffix="/7"
+            label="Support Client"
+            inView={statsInView}
+            delay={0.7}
+          />
+          <AnimatedStat
+            value={15}
+            suffix="+"
+            label="Années d'Expérience"
+            inView={statsInView}
+            delay={0.8}
+          />
         </motion.div>
       </div>
     </section>
