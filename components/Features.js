@@ -24,13 +24,13 @@ const Features = () => {
       icon: <FiWifi className="w-8 h-8" />,
       title: "Fibre Optique Ultra-Rapide",
       description: "Profitez de vitesses allant jusqu'à 1 Gbps pour télécharger, streamer et jouer sans interruption.",
-      gradient: "from-vdc-green-400 to-vdc-green-600",
+      gradient: "from-vdc-green to-emerald-600",
     },
     {
       icon: <FiZap className="w-8 h-8" />,
       title: "Latence Minimale",
       description: "Une connexion stable avec une latence ultra-faible, idéale pour le gaming et les vidéoconférences.",
-      gradient: "from-vdc-orange-400 to-vdc-orange-600",
+      gradient: "from-vdc-orange to-orange-600",
     },
     {
       icon: <FiShield className="w-8 h-8" />,

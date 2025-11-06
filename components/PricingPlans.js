@@ -37,7 +37,9 @@ const PricingPlans = () => {
         ],
         popular: false,
         icon: <FiWifi />,
-        color: "vdc-gray",
+        gradient: "from-blue-500 to-blue-600",
+        checkColor: "text-blue-500",
+        buttonGradient: "from-blue-500 to-blue-600",
       },
       {
         name: "Premium",
@@ -57,7 +59,9 @@ const PricingPlans = () => {
         ],
         popular: true,
         icon: <FiZap />,
-        color: "vdc-orange",
+        gradient: "from-vdc-orange to-orange-600",
+        checkColor: "text-vdc-orange",
+        buttonGradient: "from-vdc-orange to-orange-600",
       },
       {
         name: "Ultra",
@@ -78,7 +82,9 @@ const PricingPlans = () => {
         ],
         popular: false,
         icon: <FiAward />,
-        color: "vdc-green",
+        gradient: "from-vdc-green to-emerald-600",
+        checkColor: "text-vdc-green",
+        buttonGradient: "from-vdc-green to-emerald-600",
       },
     ],
     business: [
@@ -100,7 +106,9 @@ const PricingPlans = () => {
         ],
         popular: false,
         icon: <FiWifi />,
-        color: "vdc-gray",
+        gradient: "from-slate-500 to-slate-600",
+        checkColor: "text-slate-500",
+        buttonGradient: "from-slate-500 to-slate-600",
       },
       {
         name: "Business Pro",
@@ -122,7 +130,9 @@ const PricingPlans = () => {
         ],
         popular: true,
         icon: <FiZap />,
-        color: "vdc-orange",
+        gradient: "from-vdc-orange to-orange-600",
+        checkColor: "text-vdc-orange",
+        buttonGradient: "from-vdc-orange to-orange-600",
       },
       {
         name: "Enterprise",
@@ -144,7 +154,9 @@ const PricingPlans = () => {
         ],
         popular: false,
         icon: <FiAward />,
-        color: "vdc-green",
+        gradient: "from-vdc-green to-emerald-600",
+        checkColor: "text-vdc-green",
+        buttonGradient: "from-vdc-green to-emerald-600",
       },
     ],
   };
@@ -250,26 +262,26 @@ const PricingPlans = () => {
               )}
 
               {/* Card Header */}
-              <div className={`bg-gradient-to-br from-${plan.color}-500 to-${plan.color}-600 p-8 text-white`}>
-                <div className="text-4xl mb-4">{plan.icon}</div>
+              <div className={`bg-gradient-to-br ${plan.gradient} p-8 text-white`}>
+                <div className="text-5xl mb-4">{plan.icon}</div>
                 <h3 className="text-2xl font-bold mb-2">{plan.name}</h3>
                 <p className="text-white/90 text-sm mb-6">{plan.description}</p>
 
-                {/* Speed Display */}
-                <div className="flex items-baseline mb-2">
-                  <span className="text-6xl font-bold">{plan.speed}</span>
-                  <span className="text-2xl ml-2">{plan.unit}</span>
+                {/* Price Display */}
+                <div className="mb-6">
+                  <div className="flex items-baseline mb-2">
+                    <span className="text-5xl font-bold">{plan.price}</span>
+                    {plan.currency && <span className="text-xl ml-2">{plan.currency}</span>}
+                  </div>
+                  {plan.period && <p className="text-white/80 text-sm">{plan.period}</p>}
                 </div>
 
-                {/* Price */}
-                <div className="flex items-baseline">
-                  <span className="text-3xl font-bold">{plan.price}</span>
-                  {plan.currency && (
-                    <>
-                      <span className="text-lg ml-2">{plan.currency}</span>
-                      <span className="text-sm ml-1">{plan.period}</span>
-                    </>
-                  )}
+                {/* Speed Badge */}
+                <div className="bg-white/20 backdrop-blur-sm rounded-lg px-4 py-3 inline-block">
+                  <div className="flex items-baseline">
+                    <span className="text-3xl font-bold">{plan.speed}</span>
+                    {plan.unit && <span className="text-sm ml-2">{plan.unit}</span>}
+                  </div>
                 </div>
               </div>
 
@@ -284,7 +296,7 @@ const PricingPlans = () => {
                       transition={{ delay: 0.3 + idx * 0.1 }}
                       className="flex items-start"
                     >
-                      <FiCheck className={`text-${plan.color}-500 mt-1 mr-3 flex-shrink-0`} size={20} />
+                      <FiCheck className={`${plan.checkColor} mt-1 mr-3 flex-shrink-0`} size={20} />
                       <span className="text-vdc-gray-700">{feature}</span>
                     </motion.li>
                   ))}
@@ -295,7 +307,7 @@ const PricingPlans = () => {
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className={`w-full bg-gradient-to-r from-${plan.color}-500 to-${plan.color}-600 text-white py-4 rounded-xl font-bold flex items-center justify-center group transition-all shadow-${plan.color === "vdc-orange" ? "vdc-orange" : "vdc"}`}
+                    className={`w-full bg-gradient-to-r ${plan.buttonGradient} text-white py-4 rounded-xl font-bold flex items-center justify-center group transition-all shadow-lg`}
                   >
                     Choisir ce plan
                     <FiArrowRight className="ml-2 group-hover:translate-x-2 transition-transform" />

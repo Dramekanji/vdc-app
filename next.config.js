@@ -11,6 +11,15 @@ module.exports = {
   reactStrictMode: true,
 
   images: {
-    domains: ["www.crushpixel.com", "www.att.com"],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'www.crushpixel.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.att.com',
+      },
+    ],
   },
 };

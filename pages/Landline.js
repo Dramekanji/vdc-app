@@ -83,25 +83,25 @@ const Landline = () => {
       icon: <FiShield className="w-12 h-12" />,
       title: "Fiabilité Garantie",
       description: "Une ligne fixe stable avec 99.9% de disponibilité. Même en cas de coupure d'électricité, restez joignable.",
-      gradient: "from-blue-400 to-blue-600",
+      gradient: "from-blue-500 to-blue-600",
     },
     {
       icon: <FiPhone className="w-12 h-12" />,
       title: "Qualité Supérieure",
       description: "Son cristallin HD pour des conversations claires. Technologie VoIP de dernière génération.",
-      gradient: "from-vdc-green-400 to-vdc-green-600",
+      gradient: "from-vdc-green to-emerald-600",
     },
     {
       icon: <FiClock className="w-12 h-12" />,
       title: "Support 24/7",
       description: "Notre équipe technique est disponible jour et nuit pour résoudre vos problèmes rapidement.",
-      gradient: "from-vdc-orange-400 to-vdc-orange-600",
+      gradient: "from-vdc-orange to-orange-600",
     },
     {
       icon: <FiBriefcase className="w-12 h-12" />,
       title: "Solutions Business",
       description: "Fonctions professionnelles avancées : standard virtuel, multi-lignes, reporting détaillé.",
-      gradient: "from-purple-400 to-purple-600",
+      gradient: "from-purple-500 to-purple-600",
     },
   ];
 

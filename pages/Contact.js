@@ -46,8 +46,8 @@ const Contact = () => {
     {
       icon: <FiMapPin className="w-6 h-6" />,
       title: "Adresse",
-      details: ["Kaloum, Conakry", "République de Guinée"],
-      link: "https://maps.google.com",
+      details: ["Immeuble Palm Résidence Camayenne", "Rez-de-chaussée et 1er Etage", "Commune de Dixinn, Conakry, Guinée"],
+      link: "https://maps.app.goo.gl/MG4gCbDcvqgz2tEh6",
     },
     {
       icon: <FiClock className="w-6 h-6" />,
@@ -266,13 +266,35 @@ const Contact = () => {
         </div>
       </section>
 
-      {/* Map Section - Placeholder */}
-      <section className="h-96 bg-vdc-gray-200">
-        <div className="w-full h-full flex items-center justify-center text-vdc-gray-600">
-          <div className="text-center">
-            <FiMapPin size={48} className="mx-auto mb-4" />
-            <p className="text-lg">Google Maps Integration</p>
-            <p className="text-sm">Kaloum, Conakry, Guinée</p>
+      {/* Map Section */}
+      <section className="h-[500px] bg-vdc-gray-100 relative overflow-hidden">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3935.3916448279644!2d-13.692762!3d9.529181!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zOcKwMzEnNDUuMSJOIDEzwrA0MSczMy45Ilc!5e0!3m2!1sfr!2sgn!4v1234567890"
+          width="100%"
+          height="100%"
+          style={{ border: 0 }}
+          allowFullScreen=""
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+          title="VDC Telecom Location - Immeuble Palm Résidence Camayenne, Dixinn, Conakry"
+        />
+        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-6 text-white">
+          <div className="container mx-auto px-4 lg:px-8">
+            <div className="flex items-center gap-3">
+              <FiMapPin size={24} className="flex-shrink-0" />
+              <div>
+                <p className="font-bold text-lg">Immeuble Palm Résidence Camayenne</p>
+                <p className="text-sm text-white/90">Rez-de-chaussée et 1er Etage, Commune de Dixinn, Conakry, Guinée</p>
+              </div>
+              <a
+                href="https://maps.app.goo.gl/MG4gCbDcvqgz2tEh6"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="ml-auto bg-vdc-green text-white px-6 py-3 rounded-full font-bold hover:bg-vdc-green-dark transition-all shadow-lg hover:shadow-xl whitespace-nowrap"
+              >
+                Voir sur Google Maps
+              </a>
+            </div>
           </div>
         </div>
       </section>
