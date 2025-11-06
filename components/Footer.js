@@ -1,8 +1,8 @@
 "use client";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   FiMail,
   FiPhone,
@@ -18,6 +18,23 @@ import { FaWhatsapp } from "react-icons/fa";
 import Logo from "../public/images/vdclogo.png";
 
 const Footer = () => {
+  const [showScrollTop, setShowScrollTop] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Get the Hero section height (assuming it's the first section)
+      const heroSection = document.querySelector("section");
+      if (heroSection) {
+        const heroBottom = heroSection.offsetHeight;
+        // Show button when user has scrolled past the Hero section
+        setShowScrollTop(window.scrollY > heroBottom);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -287,17 +304,28 @@ const Footer = () => {
       </div>
 
       {/* Scroll to Top Button */}
-      <motion.button
-        onClick={scrollToTop}
-        initial={{ opacity: 0, scale: 0 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        whileHover={{ scale: 1.1, y: -5 }}
-        whileTap={{ scale: 0.9 }}
-        className="fixed bottom-8 right-8 w-12 h-12 bg-gradient-vdc text-white rounded-full shadow-vdc-lg flex items-center justify-center z-40"
-        aria-label="Scroll to top"
-      >
-        <FiArrowUp size={24} />
-      </motion.button>
+      <AnimatePresence>
+        {showScrollTop && (
+          <motion.button
+            onClick={scrollToTop}
+            initial={{ opacity: 0, scale: 0, rotate: -180 }}
+            animate={{ opacity: 1, scale: 1, rotate: 0 }}
+            exit={{ opacity: 0, scale: 0, rotate: 180 }}
+            transition={{
+              type: "spring",
+              stiffness: 260,
+              damping: 20,
+              rotate: { duration: 0.6 }
+            }}
+            whileHover={{ scale: 1.1, y: -5, rotate: 360 }}
+            whileTap={{ scale: 0.9 }}
+            className="fixed bottom-8 right-8 w-12 h-12 bg-gradient-vdc text-white rounded-full shadow-vdc-lg flex items-center justify-center z-40"
+            aria-label="Scroll to top"
+          >
+            <FiArrowUp size={24} />
+          </motion.button>
+        )}
+      </AnimatePresence>
     </footer>
   );
 };
