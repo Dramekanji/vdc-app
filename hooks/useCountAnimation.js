@@ -21,8 +21,11 @@ export const useCountAnimation = (end, duration = 2000, inView = false) => {
 
       if (progress < duration) {
         const percentage = progress / duration;
-        const easeOutQuart = 1 - Math.pow(1 - percentage, 4);
-        const currentCount = end * easeOutQuart;
+        // Use easeInOutCubic for smoother start and end
+        const easedProgress = percentage < 0.5
+          ? 4 * percentage * percentage * percentage
+          : 1 - Math.pow(-2 * percentage + 2, 3) / 2;
+        const currentCount = end * easedProgress;
         setCount(Math.floor(currentCount));
         animationFrame = requestAnimationFrame(animate);
       } else {
