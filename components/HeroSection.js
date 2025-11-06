@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { FiWifi, FiZap, FiTrendingUp, FiArrowRight } from "react-icons/fi";
+import { FiWifi, FiZap, FiTrendingUp, FiArrowRight, FiTv } from "react-icons/fi";
 
 const HeroSection = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -136,7 +136,11 @@ const HeroSection = () => {
                     transition={{ delay: 0.6 + idx * 0.1 }}
                     className="flex items-center bg-white/10 backdrop-blur-sm px-4 py-2 rounded-lg border border-white/20"
                   >
-                    <FiWifi className="text-vdc-orange mr-2" />
+                    {slides[currentSlide].id === 2 ? (
+                      <FiTv className="text-vdc-orange mr-2" />
+                    ) : (
+                      <FiWifi className="text-vdc-orange mr-2" />
+                    )}
                     <span className="text-white text-sm font-medium">{feature}</span>
                   </motion.div>
                 ))}
