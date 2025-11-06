@@ -58,7 +58,7 @@ const Contact = () => {
   ];
 
   return (
-    <div>
+    <div className="overflow-x-hidden">
       <Head>
         <title>Contactez-nous - VDC Telecom</title>
         <meta

@@ -339,11 +339,11 @@ const Navbar = () => {
                 </Link>
 
                 {/* Mobile CTA Buttons */}
-                <div className="space-y-3 mt-8">
+                <div className="mt-8">
                   <Link href="/Login" onClick={closeNav}>
                     <motion.button
                       whileTap={{ scale: 0.98 }}
-                      className="w-full flex items-center justify-center py-3 px-6 border-2 border-vdc-green text-vdc-green rounded-full font-semibold"
+                      className="w-full flex items-center justify-center py-3 px-6 border-2 border-vdc-green text-vdc-green rounded-full font-semibold mb-6"
                     >
                       <AiOutlineUser className="mr-2" />
                       Mon compte
