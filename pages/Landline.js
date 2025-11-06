@@ -5,9 +5,9 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import Image from "next/image";
 import Link from "next/link";
-import { FiCheck, FiPhone, FiGlobe, FiUsers, FiHeadphones, FiDollarSign, FiArrowRight, FiMessageSquare } from "react-icons/fi";
+import { FiCheck, FiPhone, FiHome, FiShield, FiBriefcase, FiClock, FiArrowRight, FiPhoneCall } from "react-icons/fi";
 
-const Phone = () => {
+const Landline = () => {
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
@@ -15,140 +15,149 @@ const Phone = () => {
 
   const plans = [
     {
-      name: "Basic Voice",
-      minutes: "500",
-      price: "50,000",
-      description: "Pour les appels occasionnels",
+      name: "Résidentiel Basic",
+      price: "75,000",
+      description: "Téléphonie fixe pour la maison",
       features: [
-        "500 minutes vers Guinée",
-        "Appels illimités VDC à VDC",
-        "SMS illimités nationaux",
+        "Ligne fixe analogique",
+        "Appels illimités en Guinée",
         "Messagerie vocale gratuite",
-        "Identification appelant",
+        "Affichage du numéro",
         "Transfert d'appel",
+        "Double appel",
+        "Installation gratuite",
       ],
       popular: false,
-      gradient: "from-slate-500 to-slate-600",
-      checkColor: "text-slate-500",
-      buttonGradient: "from-slate-500 to-slate-600",
+      gradient: "from-blue-500 to-blue-600",
+      checkColor: "text-blue-500",
+      buttonGradient: "from-blue-500 to-blue-600",
+      icon: <FiHome />,
     },
     {
-      name: "Unlimited Local",
-      minutes: "Illimité",
-      price: "100,000",
-      description: "Appels illimités en Guinée",
+      name: "Résidentiel Premium",
+      price: "120,000",
+      description: "La téléphonie fixe complète",
       features: [
-        "Appels illimités en Guinée",
-        "SMS & MMS illimités",
+        "Ligne VoIP haute qualité",
+        "Appels illimités nationaux",
+        "500 minutes internationales",
         "Messagerie vocale visuelle",
-        "Conférence téléphonique (5 participants)",
-        "Appel en attente",
-        "Ne pas déranger personnalisable",
-        "Application mobile incluse",
+        "Conférence à 3",
+        "Ne pas déranger",
+        "Application mobile",
+        "Téléphone HD inclus",
         "Support prioritaire",
       ],
       popular: true,
-      gradient: "from-vdc-orange to-orange-600",
-      checkColor: "text-vdc-orange",
-      buttonGradient: "from-vdc-orange to-orange-600",
-    },
-    {
-      name: "Global Plus",
-      minutes: "Illimité",
-      price: "200,000",
-      description: "Appels internationaux inclus",
-      features: [
-        "Appels illimités en Guinée",
-        "1000 minutes internationales",
-        "SMS & MMS illimités mondiaux",
-        "Messagerie vocale avancée",
-        "Conférence jusqu'à 10 personnes",
-        "Numéro international gratuit",
-        "Appels vidéo HD inclus",
-        "Enregistrement d'appels",
-        "Support VIP 24/7",
-      ],
-      popular: false,
       gradient: "from-vdc-green to-emerald-600",
       checkColor: "text-vdc-green",
       buttonGradient: "from-vdc-green to-emerald-600",
+      icon: <FiPhoneCall />,
+    },
+    {
+      name: "Business Pro",
+      price: "250,000",
+      description: "Ligne professionnelle avancée",
+      features: [
+        "Ligne VoIP professionnelle",
+        "Appels illimités Guinée",
+        "1000 minutes internationales",
+        "Standard téléphonique virtuel",
+        "Multi-lignes (jusqu'à 5)",
+        "Musique d'attente personnalisée",
+        "Enregistrement d'appels",
+        "Reporting détaillé",
+        "Support VIP 24/7",
+        "SLA garanti",
+      ],
+      popular: false,
+      gradient: "from-vdc-orange to-orange-600",
+      checkColor: "text-vdc-orange",
+      buttonGradient: "from-vdc-orange to-orange-600",
+      icon: <FiBriefcase />,
     },
   ];
 
-  const features = [
+  const advantages = [
     {
-      icon: <FiDollarSign className="w-10 h-10" />,
-      title: "Tarifs Imbattables",
-      description: "Profitez de tarifs jusqu'à 70% moins chers que la téléphonie traditionnelle grâce à notre technologie VoIP.",
-      gradient: "from-green-400 to-green-600",
-    },
-    {
-      icon: <FiPhone className="w-10 h-10" />,
-      title: "Qualité Cristalline",
-      description: "Nos téléphones VoIP avancés offrent une qualité audio HD supérieure pour des conversations claires.",
-      gradient: "from-vdc-orange-400 to-vdc-orange-600",
-    },
-    {
-      icon: <FiGlobe className="w-10 h-10" />,
-      title: "Appels Internationaux",
-      description: "Appelez le monde entier à des tarifs avantageux. Plus de 150 destinations internationales disponibles.",
+      icon: <FiShield className="w-12 h-12" />,
+      title: "Fiabilité Garantie",
+      description: "Une ligne fixe stable avec 99.9% de disponibilité. Même en cas de coupure d'électricité, restez joignable.",
       gradient: "from-blue-400 to-blue-600",
     },
     {
-      icon: <FiMessageSquare className="w-10 h-10" />,
-      title: "Fonctions Avancées",
-      description: "Messagerie vocale, transfert d'appel, conférence, ne pas déranger et bien plus encore.",
+      icon: <FiPhone className="w-12 h-12" />,
+      title: "Qualité Supérieure",
+      description: "Son cristallin HD pour des conversations claires. Technologie VoIP de dernière génération.",
+      gradient: "from-vdc-green-400 to-vdc-green-600",
+    },
+    {
+      icon: <FiClock className="w-12 h-12" />,
+      title: "Support 24/7",
+      description: "Notre équipe technique est disponible jour et nuit pour résoudre vos problèmes rapidement.",
+      gradient: "from-vdc-orange-400 to-vdc-orange-600",
+    },
+    {
+      icon: <FiBriefcase className="w-12 h-12" />,
+      title: "Solutions Business",
+      description: "Fonctions professionnelles avancées : standard virtuel, multi-lignes, reporting détaillé.",
       gradient: "from-purple-400 to-purple-600",
     },
   ];
 
   const businessFeatures = [
     {
-      title: "Standard Virtuel",
-      description: "Système téléphonique professionnel avec menu interactif et musique d'attente personnalisée",
-      icon: <FiHeadphones />,
+      title: "Standard Virtuel Intelligent",
+      description: "Menu vocal professionnel avec routage des appels vers différents départements",
+      details: ["Menu multi-niveaux", "Routage intelligent", "Heures d'ouverture"],
     },
     {
-      title: "Multi-lignes",
-      description: "Gérez plusieurs lignes téléphoniques depuis un seul appareil pour plus d'efficacité",
-      icon: <FiUsers />,
+      title: "Numérotation Abrégée",
+      description: "Configurez des numéros courts pour appeler rapidement vos contacts fréquents",
+      details: ["99 numéros abrégés", "Annuaire partagé", "Groupes d'appel"],
     },
     {
-      title: "Numéro Vert",
-      description: "Obtenez un numéro gratuit professionnel pour faciliter les contacts clients",
-      icon: <FiPhone />,
+      title: "Renvoi d'Appel Avancé",
+      description: "Transférez vos appels vers mobile, autre fixe ou messagerie selon vos règles",
+      details: ["Renvoi conditionnel", "Renvoi sur occupation", "Renvoi planifié"],
     },
     {
-      title: "Intégration CRM",
-      description: "Connectez votre téléphonie à vos outils CRM pour un suivi client optimal",
-      icon: <FiGlobe />,
+      title: "Conférence Multi-participants",
+      description: "Organisez des réunions téléphoniques avec jusqu'à 10 participants simultanés",
+      details: ["Jusqu'à 10 personnes", "Code d'accès sécurisé", "Enregistrement optionnel"],
     },
   ];
 
-  const destinations = [
-    { region: "Afrique de l'Ouest", countries: "Mali, Sénégal, Côte d'Ivoire, Ghana" },
-    { region: "Europe", countries: "France, Belgique, Allemagne, UK" },
-    { region: "Amérique du Nord", countries: "USA, Canada" },
-    { region: "Afrique Centrale", countries: "RDC, Cameroun, Gabon" },
-    { region: "Afrique du Nord", countries: "Maroc, Algérie, Tunisie" },
-    { region: "Moyen-Orient", countries: "Émirats, Arabie Saoudite" },
+  const useCases = [
+    {
+      title: "Pour la Maison",
+      icon: <FiHome size={32} />,
+      description: "Ligne fixe fiable pour toute la famille avec appels illimités en Guinée",
+      benefits: ["Économique", "Facile à utiliser", "Toujours joignable"],
+    },
+    {
+      title: "Pour les Entreprises",
+      icon: <FiBriefcase size={32} />,
+      description: "Standard professionnel avec fonctions avancées pour votre activité",
+      benefits: ["Image professionnelle", "Multi-lignes", "Reporting détaillé"],
+    },
   ];
 
   return (
     <div>
       <Head>
-        <title>Téléphonie VoIP & Forfaits Mobile - VDC Telecom</title>
+        <title>Téléphonie Fixe & Ligne Fixe - VDC Telecom</title>
         <meta
           name="description"
-          content="Téléphonie VoIP haute qualité avec appels illimités en Guinée et tarifs internationaux avantageux. Téléphones HD inclus."
+          content="Ligne fixe résidentielle et professionnelle avec appels illimités en Guinée. Standard virtuel, VoIP HD et support 24/7."
         />
       </Head>
 
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 bg-gradient-to-br from-vdc-orange via-orange-600 to-red-600 overflow-hidden">
+      <section className="relative pt-32 pb-20 bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-800 overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-0 left-0 w-96 h-96 bg-white rounded-full blur-3xl" />
-          <div className="absolute bottom-0 right-0 w-96 h-96 bg-yellow-300 rounded-full blur-3xl" />
+          <div className="absolute bottom-0 right-0 w-96 h-96 bg-cyan-300 rounded-full blur-3xl" />
         </div>
 
         <div className="container mx-auto px-4 lg:px-8 relative z-10">
@@ -165,22 +174,22 @@ const Phone = () => {
                 className="inline-block px-4 py-2 bg-white/20 backdrop-blur-sm text-white rounded-full text-sm font-semibold mb-6"
               >
                 <FiPhone className="inline mr-2" />
-                Technologie VoIP Avancée
+                Ligne Fixe Fiable et Stable
               </motion.span>
 
               <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
-                Téléphonie VoIP Professionnelle à Conakry
+                Téléphonie Fixe Moderne pour Conakry
               </h1>
               <p className="text-xl text-white/90 mb-8 leading-relaxed">
-                Profitez de la voix sur IP pour des appels de qualité HD à des tarifs imbattables.
-                Appels illimités en Guinée et forfaits internationaux avantageux.
+                Une ligne fixe fiable avec appels illimités en Guinée. Pour la maison comme
+                pour l'entreprise, restez connecté avec la meilleure qualité.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link href="#plans">
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="bg-white text-vdc-orange px-8 py-4 rounded-full font-bold shadow-lg hover:shadow-xl transition-all"
+                    className="bg-white text-blue-700 px-8 py-4 rounded-full font-bold shadow-lg hover:shadow-xl transition-all"
                   >
                     Voir les forfaits
                   </motion.button>
@@ -191,7 +200,7 @@ const Phone = () => {
                     whileTap={{ scale: 0.95 }}
                     className="bg-white/10 backdrop-blur-sm text-white px-8 py-4 rounded-full font-bold border-2 border-white/30 hover:bg-white/20 transition-all"
                   >
-                    Tester gratuitement
+                    Obtenir un devis
                   </motion.button>
                 </Link>
               </div>
@@ -204,8 +213,8 @@ const Phone = () => {
               className="relative"
             >
               <Image
-                src="/images/woman-green-phone.png"
-                alt="Téléphonie VoIP"
+                src="/images/engineer.webp"
+                alt="Téléphonie fixe VDC"
                 width={600}
                 height={400}
                 className="rounded-2xl shadow-2xl"
@@ -215,7 +224,7 @@ const Phone = () => {
         </div>
       </section>
 
-      {/* Features Section */}
+      {/* Advantages Section */}
       <section ref={ref} className="py-20 bg-white">
         <div className="container mx-auto px-4 lg:px-8">
           <motion.div
@@ -227,21 +236,20 @@ const Phone = () => {
             <motion.span
               initial={{ opacity: 0, scale: 0.8 }}
               animate={inView ? { opacity: 1, scale: 1 } : {}}
-              className="inline-block px-4 py-2 bg-vdc-orange-50 text-vdc-orange-600 rounded-full text-sm font-semibold mb-4"
+              className="inline-block px-4 py-2 bg-blue-50 text-blue-600 rounded-full text-sm font-semibold mb-4"
             >
-              Technologie VoIP
+              Pourquoi Choisir Nos Lignes Fixes ?
             </motion.span>
             <h2 className="text-4xl md:text-5xl font-bold text-vdc-gray-900 mb-4">
-              Pourquoi Choisir Notre Téléphonie ?
+              Les Avantages de la Téléphonie Fixe VDC
             </h2>
             <p className="text-xl text-vdc-gray-600 max-w-3xl mx-auto">
-              Notre téléphonie VoIP combine qualité professionnelle, tarifs compétitifs et
-              fonctionnalités avancées pour une expérience d'appel exceptionnelle.
+              Fiabilité, qualité et fonctionnalités avancées pour particuliers et professionnels
             </p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {features.map((feature, index) => (
+            {advantages.map((advantage, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 50 }}
@@ -253,19 +261,19 @@ const Phone = () => {
                 <motion.div
                   whileHover={{ rotate: 360 }}
                   transition={{ duration: 0.6 }}
-                  className={`w-16 h-16 bg-gradient-to-br ${feature.gradient} rounded-xl flex items-center justify-center text-white mb-6 shadow-lg`}
+                  className={`w-16 h-16 bg-gradient-to-br ${advantage.gradient} rounded-xl flex items-center justify-center text-white mb-6 shadow-lg`}
                 >
-                  {feature.icon}
+                  {advantage.icon}
                 </motion.div>
-                <h3 className="text-xl font-bold text-vdc-gray-900 mb-4">{feature.title}</h3>
-                <p className="text-vdc-gray-600 leading-relaxed">{feature.description}</p>
+                <h3 className="text-xl font-bold text-vdc-gray-900 mb-4">{advantage.title}</h3>
+                <p className="text-vdc-gray-600 leading-relaxed">{advantage.description}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* International Destinations */}
+      {/* Use Cases Section */}
       <section className="py-20 bg-gradient-to-b from-vdc-gray-50 to-white">
         <div className="container mx-auto px-4 lg:px-8">
           <motion.div
@@ -274,37 +282,35 @@ const Phone = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            <motion.span
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              className="inline-block px-4 py-2 bg-blue-50 text-blue-600 rounded-full text-sm font-semibold mb-4"
-            >
-              <FiGlobe className="inline mr-2" />
-              Appels Internationaux
-            </motion.span>
             <h2 className="text-4xl md:text-5xl font-bold text-vdc-gray-900 mb-4">
-              Appelez le Monde Entier
+              Une Solution pour Tous
             </h2>
             <p className="text-xl text-vdc-gray-600 max-w-3xl mx-auto">
-              Plus de 150 destinations internationales avec des tarifs imbattables
+              Que ce soit pour votre domicile ou votre entreprise, nous avons la solution adaptée
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-            {destinations.map((dest, index) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            {useCases.map((useCase, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                transition={{ duration: 0.6, delay: index * 0.2 }}
                 whileHover={{ scale: 1.05 }}
-                className="bg-white rounded-xl p-6 shadow-lg border border-vdc-orange-100"
+                className="bg-white rounded-2xl p-8 shadow-xl"
               >
-                <div className="flex items-center mb-3">
-                  <FiGlobe className="text-vdc-orange mr-2" size={24} />
-                  <h3 className="text-xl font-bold text-vdc-gray-900">{dest.region}</h3>
-                </div>
-                <p className="text-vdc-gray-600 text-sm">{dest.countries}</p>
+                <div className="text-vdc-green mb-6">{useCase.icon}</div>
+                <h3 className="text-2xl font-bold text-vdc-gray-900 mb-4">{useCase.title}</h3>
+                <p className="text-vdc-gray-600 mb-6">{useCase.description}</p>
+                <ul className="space-y-2">
+                  {useCase.benefits.map((benefit, idx) => (
+                    <li key={idx} className="flex items-center text-vdc-gray-700">
+                      <FiCheck className="text-vdc-green mr-2" />
+                      {benefit}
+                    </li>
+                  ))}
+                </ul>
               </motion.div>
             ))}
           </div>
@@ -323,15 +329,15 @@ const Phone = () => {
             <motion.span
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
-              className="inline-block px-4 py-2 bg-vdc-green-50 text-vdc-green-600 rounded-full text-sm font-semibold mb-4"
+              className="inline-block px-4 py-2 bg-vdc-orange-50 text-vdc-orange-600 rounded-full text-sm font-semibold mb-4"
             >
-              Forfaits Téléphonie
+              Nos Forfaits
             </motion.span>
             <h2 className="text-4xl md:text-5xl font-bold text-vdc-gray-900 mb-4">
-              Choisissez Votre Forfait Téléphonique
+              Choisissez Votre Forfait Ligne Fixe
             </h2>
             <p className="text-xl text-vdc-gray-600 max-w-3xl mx-auto">
-              Tous les forfaits incluent téléphone VoIP HD et installation gratuite
+              Installation gratuite et activation sous 48h pour tous les forfaits
             </p>
           </motion.div>
 
@@ -344,7 +350,7 @@ const Phone = () => {
                 transition={{ duration: 0.6, delay: index * 0.2 }}
                 whileHover={{ y: -10, boxShadow: "0 20px 50px rgba(0,0,0,0.1)" }}
                 className={`relative bg-white rounded-2xl overflow-hidden shadow-lg transition-all ${
-                  plan.popular ? "ring-4 ring-vdc-orange ring-opacity-50" : ""
+                  plan.popular ? "ring-4 ring-vdc-green ring-opacity-50" : ""
                 }`}
               >
                 {plan.popular && (
@@ -352,33 +358,22 @@ const Phone = () => {
                     initial={{ x: 100 }}
                     whileInView={{ x: 0 }}
                     transition={{ delay: 0.5 }}
-                    className="absolute top-6 -right-10 bg-gradient-vdc-orange text-white px-12 py-2 text-sm font-bold transform rotate-45 shadow-lg"
+                    className="absolute top-6 -right-10 bg-gradient-vdc text-white px-12 py-2 text-sm font-bold transform rotate-45 shadow-lg"
                   >
-                    POPULAIRE
+                    RECOMMANDÉ
                   </motion.div>
                 )}
 
                 <div className={`bg-gradient-to-br ${plan.gradient} p-8 text-white`}>
-                  <div className="text-5xl mb-4">
-                    <FiPhone />
-                  </div>
+                  <div className="text-5xl mb-4">{plan.icon}</div>
                   <h3 className="text-2xl font-bold mb-2">{plan.name}</h3>
                   <p className="text-white/90 text-sm mb-6">{plan.description}</p>
 
-                  <div className="mb-6">
-                    <div className="flex items-baseline mb-2">
-                      <span className="text-5xl font-bold">{plan.price}</span>
-                      <span className="text-xl ml-2">GNF</span>
-                    </div>
-                    <p className="text-white/80 text-sm">/mois</p>
+                  <div className="flex items-baseline mb-2">
+                    <span className="text-5xl font-bold">{plan.price}</span>
+                    <span className="text-xl ml-2">GNF</span>
                   </div>
-
-                  <div className="bg-white/20 backdrop-blur-sm rounded-lg px-4 py-3 inline-block">
-                    <div className="flex items-baseline">
-                      <span className="text-3xl font-bold">{plan.minutes}</span>
-                      <span className="text-sm ml-2">minutes</span>
-                    </div>
-                  </div>
+                  <p className="text-white/80 text-sm">/mois</p>
                 </div>
 
                 <div className="p-8">
@@ -428,57 +423,43 @@ const Phone = () => {
               whileInView={{ opacity: 1, scale: 1 }}
               className="inline-block px-4 py-2 bg-purple-50 text-purple-600 rounded-full text-sm font-semibold mb-4"
             >
-              Pour les Entreprises
+              Fonctionnalités Business
             </motion.span>
             <h2 className="text-4xl md:text-5xl font-bold text-vdc-gray-900 mb-4">
-              Solutions Téléphonie Business
+              Standard Téléphonique Professionnel
             </h2>
             <p className="text-xl text-vdc-gray-600 max-w-3xl mx-auto">
-              Des fonctionnalités professionnelles pour optimiser votre communication d'entreprise
+              Toutes les fonctionnalités dont votre entreprise a besoin
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
             {businessFeatures.map((feature, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                whileHover={{ y: -5 }}
-                className="bg-white rounded-xl p-6 shadow-lg"
+                className="bg-white rounded-2xl p-8 shadow-lg"
               >
-                <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-600 rounded-lg flex items-center justify-center text-white mb-4">
-                  {feature.icon}
-                </div>
-                <h3 className="text-lg font-bold text-vdc-gray-900 mb-2">{feature.title}</h3>
-                <p className="text-vdc-gray-600 text-sm">{feature.description}</p>
+                <h3 className="text-2xl font-bold text-vdc-gray-900 mb-3">{feature.title}</h3>
+                <p className="text-vdc-gray-600 mb-4">{feature.description}</p>
+                <ul className="space-y-2">
+                  {feature.details.map((detail, idx) => (
+                    <li key={idx} className="flex items-center text-vdc-gray-700 text-sm">
+                      <FiCheck className="text-vdc-green mr-2 flex-shrink-0" size={16} />
+                      {detail}
+                    </li>
+                  ))}
+                </ul>
               </motion.div>
             ))}
           </div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-            className="text-center mt-12"
-          >
-            <Link href="/Business">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="bg-gradient-to-r from-purple-600 to-purple-700 text-white px-8 py-4 rounded-full font-bold shadow-lg"
-              >
-                Découvrir les Solutions Business
-                <FiArrowRight className="inline ml-2" />
-              </motion.button>
-            </Link>
-          </motion.div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-vdc-orange to-red-600">
+      <section className="py-20 bg-gradient-to-r from-blue-600 to-indigo-700">
         <div className="container mx-auto px-4 lg:px-8 text-center text-white">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -486,18 +467,18 @@ const Phone = () => {
             transition={{ duration: 0.6 }}
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Passez à la Téléphonie VoIP Aujourd'hui
+              Prêt pour une Ligne Fixe Fiable ?
             </h2>
             <p className="text-xl mb-8 text-white/90 max-w-2xl mx-auto">
-              Testez gratuitement pendant 30 jours et découvrez la différence VDC Telecom.
+              Installation sous 48h. Contactez-nous dès aujourd'hui pour obtenir votre ligne fixe.
             </p>
             <Link href="/Contact">
               <motion.button
                 whileHover={{ scale: 1.05, boxShadow: "0 10px 30px rgba(0,0,0,0.3)" }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-white text-vdc-orange px-10 py-5 rounded-full font-bold text-lg shadow-lg"
+                className="bg-white text-blue-700 px-10 py-5 rounded-full font-bold text-lg shadow-lg"
               >
-                Commencer l'Essai Gratuit
+                Commander Ma Ligne
               </motion.button>
             </Link>
           </motion.div>
@@ -507,4 +488,4 @@ const Phone = () => {
   );
 };
 
-export default Phone;
+export default Landline;

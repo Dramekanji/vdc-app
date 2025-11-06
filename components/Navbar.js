@@ -1,185 +1,370 @@
+"use client";
 import Link from "next/link";
 import Image from "next/image";
-import React, { useState } from "react";
-import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
-import { FaAngleDown, FaAngleRight } from "react-icons/fa";
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  AiOutlineMenu,
+  AiOutlineClose,
+  AiOutlineDown,
+  AiOutlineUser,
+  AiOutlineShoppingCart
+} from "react-icons/ai";
+import { FiPhone, FiMonitor, FiWifi } from "react-icons/fi";
 import Logo from "../public/images/vdclogo.png";
 
 const Navbar = () => {
   const [nav, setNav] = useState(false);
-  const [shopSubMenuVisible, setShopSubMenuVisible] = useState(false);
-  const [supportSubMenuVisible, setSupportSubMenuVisible] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const handleNav = () => {
     setNav(!nav);
   };
 
-  const toggleShopSubMenu = () => {
-    setShopSubMenuVisible(!shopSubMenuVisible);
-    setSupportSubMenuVisible(false); // Close support submenu when opening shop submenu
-  };
-
-  const toggleSupportSubMenu = () => {
-    setSupportSubMenuVisible(!supportSubMenuVisible);
-    setShopSubMenuVisible(false); // Close shop submenu when opening support submenu
-  };
-
-  const toggleShopSubmenuOnClick = () => {
-    // Toggle the Shop submenu when clicking on the Shop item
-    setShopSubMenuVisible(!shopSubMenuVisible);
-    setSupportSubMenuVisible(false); // Close support submenu when opening shop submenu
-  };
-
   const closeNav = () => {
     setNav(false);
+    setActiveDropdown(null);
   };
 
-  return (
-    <div className="fixed left-0 top-0 z-20 w-full bg-[#1EAB07]">
-      <div className="container mx-auto flex justify-between items-center p-4">
-        <div className="flex items-center ml-20">
-          <Link href="/">
-            <div>
-              <Image src={Logo} alt="VDC Logo" style={{ width: "200px" }} />
-            </div>
-          </Link>
-          <ul className="hidden sm:flex space-x-1">
-            <li
-              className="text-white cursor-pointer px-6 py-1 relative group"
-              // onMouseEnter={toggleShopSubMenu}
-              // onMouseLeave={toggleShopSubMenu}
-              onClick={toggleShopSubmenuOnClick} // Toggle Shop submenu on click
-            >
-              <div className="text-white text-2xl cursor-pointer px-2 py-1 relative">
-                Shop
-                <div
-                  className={`absolute w-full h-1 bottom-0 left-0 transition-all duration-300 origin-left ${
-                    shopSubMenuVisible ? "w-full" : "w-0"
-                  }`}
-                  style={{ background: "#F39419" }}
-                ></div>
-              </div>
+  const toggleDropdown = (menu) => {
+    setActiveDropdown(activeDropdown === menu ? null : menu);
+  };
 
-              <div
-                className={`absolute left-0 w-60 bg-[#1EAB07] shadow-md shadow-gray-800 text-gray-800 mt-6 text-base py-8 ${
-                  shopSubMenuVisible ? "block" : "hidden"
-                }`}
+  const menuItems = [
+    {
+      id: "internet",
+      label: "Internet",
+      icon: <FiWifi className="mr-2" />,
+      submenu: [
+        { label: "Plans résidentiels", href: "/Internet", desc: "Connexion rapide et fiable" },
+        { label: "Plans d'affaires", href: "/Business", desc: "Solutions professionnelles" },
+        { label: "Couverture réseau", href: "/Coverage", desc: "Vérifiez votre zone" },
+      ],
+    },
+    {
+      id: "tv",
+      label: "Télévision",
+      icon: <FiMonitor className="mr-2" />,
+      submenu: [
+        { label: "Plans IPTV", href: "/TV", desc: "Chaînes HD et 4K" },
+        { label: "Packages combinés", href: "/Bundles", desc: "Internet + TV + Téléphone" },
+      ],
+    },
+    {
+      id: "phone",
+      label: "Téléphone",
+      icon: <FiPhone className="mr-2" />,
+      submenu: [
+        { label: "Téléphonie mobile", href: "/Phone", desc: "Plans voix et données" },
+        { label: "Téléphone fixe", href: "/Landline", desc: "Service résidentiel" },
+      ],
+    },
+  ];
+
+  return (
+    <>
+      <motion.nav
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.5 }}
+        className={`fixed left-0 top-0 z-50 w-full transition-all duration-300 ${
+          scrolled
+            ? "bg-white shadow-lg"
+            : "bg-gradient-to-r from-vdc-green to-vdc-green-light"
+        }`}
+      >
+        <div className="container mx-auto px-4 lg:px-8">
+          <div className="flex items-center justify-between h-20">
+            {/* Logo */}
+            <Link href="/" onClick={closeNav}>
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="relative z-50"
               >
-                {/* Normal SubMenu */}
-                <div className="shadow-lg bg-[#1EAB07]">
-                  <Link
-                    href="/Internet"
-                    className="block py-2 px-4 hover:bg-[#F39419]"
-                    onClick={closeNav}
+                <Image
+                  src={Logo}
+                  alt="VDC Telecom Logo"
+                  width={180}
+                  height={50}
+                  priority
+                  className="object-contain"
+                />
+              </motion.div>
+            </Link>
+
+            {/* Desktop Menu */}
+            <div className="hidden lg:flex items-center space-x-8">
+              {menuItems.map((item) => (
+                <div
+                  key={item.id}
+                  className="relative group"
+                  onMouseEnter={() => setActiveDropdown(item.id)}
+                  onMouseLeave={() => setActiveDropdown(null)}
+                >
+                  <button
+                    className={`flex items-center text-base font-medium py-2 transition-colors ${
+                      scrolled
+                        ? "text-vdc-gray-700 hover:text-vdc-green"
+                        : "text-white hover:text-vdc-orange-light"
+                    }`}
                   >
-                    Internet
+                    {item.label}
+                    <AiOutlineDown className="ml-1 text-xs" />
+                  </button>
+
+                  <AnimatePresence>
+                    {activeDropdown === item.id && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 10 }}
+                        transition={{ duration: 0.2 }}
+                        className="absolute left-0 mt-2 w-80 bg-white rounded-lg shadow-2xl overflow-hidden"
+                      >
+                        <div className="p-2">
+                          {item.submenu.map((subItem, idx) => (
+                            <Link
+                              key={idx}
+                              href={subItem.href}
+                              onClick={closeNav}
+                            >
+                              <motion.div
+                                whileHover={{ x: 5 }}
+                                className="flex items-start p-4 rounded-lg hover:bg-vdc-green-50 transition-colors cursor-pointer"
+                              >
+                                {item.icon}
+                                <div>
+                                  <div className="font-semibold text-vdc-gray-800">
+                                    {subItem.label}
+                                  </div>
+                                  <div className="text-sm text-vdc-gray-600">
+                                    {subItem.desc}
+                                  </div>
+                                </div>
+                              </motion.div>
+                            </Link>
+                          ))}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              ))}
+
+              <Link href="/Support">
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className={`text-base font-medium py-2 transition-colors ${
+                    scrolled
+                      ? "text-vdc-gray-700 hover:text-vdc-green"
+                      : "text-white hover:text-vdc-orange-light"
+                  }`}
+                >
+                  Support
+                </motion.button>
+              </Link>
+
+              <Link href="/About">
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className={`text-base font-medium py-2 transition-colors ${
+                    scrolled
+                      ? "text-vdc-gray-700 hover:text-vdc-green"
+                      : "text-white hover:text-vdc-orange-light"
+                  }`}
+                >
+                  À propos
+                </motion.button>
+              </Link>
+            </div>
+
+            {/* CTA Buttons */}
+            <div className="hidden lg:flex items-center space-x-4">
+              <Link href="/Login">
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className={`flex items-center px-4 py-2 rounded-full font-medium transition-colors ${
+                    scrolled
+                      ? "text-vdc-green hover:bg-vdc-green-50"
+                      : "text-white hover:bg-white/10"
+                  }`}
+                >
+                  <AiOutlineUser className="mr-2" />
+                  Mon compte
+                </motion.button>
+              </Link>
+
+              <Link href="/Contact">
+                <motion.button
+                  whileHover={{ scale: 1.05, boxShadow: "0 8px 30px rgba(243, 148, 25, 0.3)" }}
+                  whileTap={{ scale: 0.95 }}
+                  className="bg-gradient-vdc-orange text-white px-6 py-2.5 rounded-full font-semibold shadow-vdc-orange"
+                >
+                  Contactez-nous
+                </motion.button>
+              </Link>
+            </div>
+
+            {/* Mobile Menu Button */}
+            <motion.button
+              whileTap={{ scale: 0.9 }}
+              onClick={handleNav}
+              className="lg:hidden z-50 p-2"
+              aria-label="Toggle menu"
+            >
+              {nav ? (
+                <AiOutlineClose
+                  size={28}
+                  className={scrolled ? "text-vdc-green" : "text-white"}
+                />
+              ) : (
+                <AiOutlineMenu
+                  size={28}
+                  className={scrolled ? "text-vdc-green" : "text-white"}
+                />
+              )}
+            </motion.button>
+          </div>
+        </div>
+      </motion.nav>
+
+      {/* Mobile Menu */}
+      <AnimatePresence>
+        {nav && (
+          <>
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              onClick={closeNav}
+              className="fixed inset-0 bg-black/50 z-40 lg:hidden"
+            />
+
+            {/* Mobile Menu Panel */}
+            <motion.div
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ type: "spring", damping: 25, stiffness: 200 }}
+              className="fixed top-0 right-0 bottom-0 w-full sm:w-96 bg-white z-40 lg:hidden overflow-y-auto shadow-2xl"
+            >
+              <div className="pt-24 pb-8 px-6">
+                {/* Mobile Menu Items */}
+                {menuItems.map((item) => (
+                  <div key={item.id} className="mb-4">
+                    <button
+                      onClick={() => toggleDropdown(item.id)}
+                      className="flex items-center justify-between w-full py-4 px-4 bg-vdc-gray-50 rounded-lg font-semibold text-vdc-gray-800"
+                    >
+                      <span className="flex items-center text-lg">
+                        {item.icon}
+                        {item.label}
+                      </span>
+                      <motion.div
+                        animate={{ rotate: activeDropdown === item.id ? 180 : 0 }}
+                        transition={{ duration: 0.3 }}
+                      >
+                        <AiOutlineDown />
+                      </motion.div>
+                    </button>
+
+                    <AnimatePresence>
+                      {activeDropdown === item.id && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.3 }}
+                          className="overflow-hidden"
+                        >
+                          <div className="pl-4 pt-2 space-y-2">
+                            {item.submenu.map((subItem, idx) => (
+                              <Link
+                                key={idx}
+                                href={subItem.href}
+                                onClick={closeNav}
+                              >
+                                <motion.div
+                                  whileTap={{ scale: 0.98 }}
+                                  className="py-3 px-4 hover:bg-vdc-green-50 rounded-lg transition-colors"
+                                >
+                                  <div className="font-medium text-vdc-gray-800">
+                                    {subItem.label}
+                                  </div>
+                                  <div className="text-sm text-vdc-gray-600">
+                                    {subItem.desc}
+                                  </div>
+                                </motion.div>
+                              </Link>
+                            ))}
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                ))}
+
+                {/* Mobile Support & About Links */}
+                <Link href="/Support" onClick={closeNav}>
+                  <motion.div
+                    whileTap={{ scale: 0.98 }}
+                    className="py-4 px-4 bg-vdc-gray-50 rounded-lg font-semibold text-vdc-gray-800 mb-4 text-lg"
+                  >
+                    Support
+                  </motion.div>
+                </Link>
+
+                <Link href="/About" onClick={closeNav}>
+                  <motion.div
+                    whileTap={{ scale: 0.98 }}
+                    className="py-4 px-4 bg-vdc-gray-50 rounded-lg font-semibold text-vdc-gray-800 mb-6 text-lg"
+                  >
+                    À propos
+                  </motion.div>
+                </Link>
+
+                {/* Mobile CTA Buttons */}
+                <div className="space-y-3 mt-8">
+                  <Link href="/Login" onClick={closeNav}>
+                    <motion.button
+                      whileTap={{ scale: 0.98 }}
+                      className="w-full flex items-center justify-center py-3 px-6 border-2 border-vdc-green text-vdc-green rounded-full font-semibold"
+                    >
+                      <AiOutlineUser className="mr-2" />
+                      Mon compte
+                    </motion.button>
                   </Link>
-                  <Link
-                    href="/TV"
-                    className="block py-2 px-4 hover-bg-[#F39419]"
-                    onClick={closeNav}
-                  >
-                    TV
-                  </Link>
-                  <Link
-                    href="/Phone"
-                    className="block py-2 px-4 mt-2 hover:bg-[#F39419]"
-                    onClick={closeNav}
-                  >
-                    Phone
+
+                  <Link href="/Contact" onClick={closeNav}>
+                    <motion.button
+                      whileTap={{ scale: 0.98 }}
+                      className="w-full bg-gradient-vdc-orange text-white py-3 px-6 rounded-full font-semibold shadow-vdc-orange"
+                    >
+                      Contactez-nous
+                    </motion.button>
                   </Link>
                 </div>
               </div>
-            </li>
-            <li
-              className="text-white cursor-pointer px-6 py-1 relative group"
-              onMouseEnter={toggleSupportSubMenu}
-              onMouseLeave={toggleSupportSubMenu}
-            >
-              <Link
-                href="/Support"
-                className="text-white text-2xl cursor-pointer px-2 py-1 relative"
-              >
-                Support
-                <div
-                  className={`absolute w-full h-1 bottom-0 left-0 transition-all duration-300 origin-left ${
-                    supportSubMenuVisible ? "w-full" : "w-0"
-                  }`}
-                  style={{ background: "#F39419" }}
-                ></div>
-              </Link>
-            </li>
-          </ul>
-        </div>
-        <div
-          onClick={handleNav}
-          className="sm:hidden z-10 cursor-pointer ml-auto"
-        >
-          {nav ? (
-            <AiOutlineClose size={30} style={{ color: "#F39419" }} />
-          ) : (
-            <AiOutlineMenu size={30} style={{ color: "#F39419" }} />
-          )}
-        </div>
-      </div>
-      <div
-        className={`${
-          nav
-            ? "sm:hidden fixed top-0 right-0 bottom-0 flex flex-col justify-center items-center w-full h-screen bg-[#228B22] text-center ease-in duration-300 transform translate-x-0"
-            : "sm:hidden fixed top-0 right-0 bottom-0 flex flex-col justify-center items-center w-full h-screen bg-[#228B22] text-center ease-in duration-300 transform translate-x-full"
-        }`}
-      >
-        <div
-          className={`container text-white text-2xl cursor-pointer shadow-xl bg-[#1EAB07] rounded px-6 py-2 border-b-2 border-black flex items-center justify-between transform ${
-            nav ? "translate-x-0" : "translate-x-full"
-          }`}
-          onClick={toggleShopSubMenu}
-        >
-          <button>Shop</button>
-          {shopSubMenuVisible ? <FaAngleDown /> : <FaAngleRight />}
-        </div>
-
-        <div className="container shadow-lg">
-          <div
-            className={`${
-              shopSubMenuVisible ? "block" : "hidden"
-            } text-white text-2xl cursor-pointer py-4 shadow-xl`}
-          >
-            <Link href="/Internet" onClick={closeNav}>
-              Internet
-            </Link>
-          </div>
-          <div
-            className={`${
-              shopSubMenuVisible ? "block" : "hidden"
-            } text-white text-2xl cursor-pointer py-4 shadow-xl`}
-          >
-            <Link href="/TV" onClick={closeNav}>
-              TV
-            </Link>
-          </div>
-          <div
-            className={`${
-              shopSubMenuVisible ? "block" : "hidden"
-            } text-white text-2xl cursor-pointer py-4 shadow-xl`}
-          >
-            <Link href="/Phone" onClick={closeNav}>
-              Phone
-            </Link>
-          </div>
-        </div>
-        <div
-          className={`container text-white text-2xl cursor-pointer shadow-xl bg-[#1EAB07] rounded px-6 py-2 border-b-2 border-black flex items-center justify-between transform ${
-            nav ? "translate-x-0" : "translate-x-full"
-          }`}
-        >
-          <Link href="/support" onClick={closeNav}>
-            <div>Support</div>
-          </Link>
-          <FaAngleRight />
-        </div>
-      </div>
-    </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+    </>
   );
 };
 
